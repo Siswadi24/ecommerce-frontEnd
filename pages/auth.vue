@@ -6,7 +6,11 @@
 
 <script setup>
 definePageMeta({
-    layout: 'auth'
+    layout: 'auth',
+    header: {
+        showProfile: true,
+        title: 'Keranjang Belanja'
+    }
 })
 </script>
 

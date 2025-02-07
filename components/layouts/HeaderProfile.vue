@@ -15,6 +15,7 @@
 .header-profile {
     @apply bg-primary;
     @apply py-2;
+    @apply text-white;
 }
 
 .header-profile-container {

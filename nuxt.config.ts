@@ -22,9 +22,9 @@ export default defineNuxtConfig({
       ]
     }
   },
-  vite: {
-    server: {
-      allowedHosts: ["9904-125-160-99-154.ngrok-free.app"],
-    },
-  },
+  // vite: {
+  //   server: {
+  //     allowedHosts: ["9904-125-160-99-154.ngrok-free.app"],
+  //   },
+  // },
 })

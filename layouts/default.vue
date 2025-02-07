@@ -19,12 +19,11 @@ import { LayoutsHeaderOrange } from '#components';
     @apply flex flex-col;
     /* @apply w-full; */
     @apply min-h-screen;
-    /* @apply bg-red-200; */
 }
 
 .main-layout {
     @apply flex-1;
-    @apply bg-slate-600;
+    @apply bg-slate-300;
 }
 
 

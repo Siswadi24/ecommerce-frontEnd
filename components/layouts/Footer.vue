@@ -154,7 +154,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p class="footer-text">© Putra's 2024. Hak Cipta Dilindungi</p>
+                <p class="footer-text">© Putra's {{ YearCopyright }}. Hak Cipta Dilindungi</p>
                 <div class="flex">
                     <span class="footer-text">Negara:</span>
                     <div class="sm:grid grid-cols-2 lg:flex divide-x divide-black/20">
@@ -169,6 +169,8 @@
 </template>
 
 <script setup>
+const YearCopyright = new Date().getFullYear()
+
 const layananPelanggan = [
     'Bantuan',
     'Metode Pembayaran',
@@ -222,6 +224,7 @@ const country = [
 .footer-top {
     @apply grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5;
     @apply pt-10 pb-8;
+    @apply border-b;
 }
 
 .footer h3 {

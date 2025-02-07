@@ -8,7 +8,11 @@
 </template>
 
 <script setup>
-
+definePageMeta({
+    header: {
+        showProfile: true,
+    }
+})
 </script>
 
 <style scoped>

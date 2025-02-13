@@ -1,20 +1,37 @@
 <template>
-    <div>
-        <UContainer>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio iure quo asperiores sunt aspernatur quidem dolore assumenda maxime error adipisci? Maiores voluptas reiciendis libero ab hic delectus exercitationem optio consequatur sit eligendi minus iure veniam eveniet molestiae, ducimus atque! Animi voluptatibus maiores voluptas. Exercitationem rerum, eos expedita voluptatibus doloremque dolorem, officia obcaecati saepe consequuntur sequi nam maiores vel atque nemo repellat alias minima cum accusantium sit et eum? Quibusdam temporibus voluptate praesentium quis facere provident dolorem, dignissimos quo in dolorum asperiores accusantium rerum reiciendis officia voluptatum eveniet repellat ut excepturi laboriosam sequi illum eius vero eligendi nam. Temporibus est veniam quod ipsam porro tempore illum repellendus dolorem laudantium sit consequuntur nostrum minima quibusdam facere fuga odit perferendis, accusamus vitae eaque illo ullam? Dolore quaerat fugiat perferendis nobis rerum id repellat in, rem fuga, dolorem quos. Impedit perspiciatis temporibus expedita, necessitatibus quidem quae, quia nisi eveniet dolorum ipsam labore nostrum eum recusandae et dolor natus consectetur vitae alias corporis molestias. Delectus laborum incidunt quisquam aut praesentium reprehenderit facilis laboriosam quas reiciendis molestiae consequatur explicabo voluptatem adipisci, provident amet non suscipit? Eius dolor, minima laborum eligendi sint repellendus quia maiores praesentium, numquam omnis assumenda fuga corrupti, deserunt veniam officiis eaque quisquam cumque.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio iure quo asperiores sunt aspernatur quidem dolore assumenda maxime error adipisci? Maiores voluptas reiciendis libero ab hic delectus exercitationem optio consequatur sit eligendi minus iure veniam eveniet molestiae, ducimus atque! Animi voluptatibus maiores voluptas. Exercitationem rerum, eos expedita voluptatibus doloremque dolorem, officia obcaecati saepe consequuntur sequi nam maiores vel atque nemo repellat alias minima cum accusantium sit et eum? Quibusdam temporibus voluptate praesentium quis facere provident dolorem, dignissimos quo in dolorum asperiores accusantium rerum reiciendis officia voluptatum eveniet repellat ut excepturi laboriosam sequi illum eius vero eligendi nam. Temporibus est veniam quod ipsam porro tempore illum repellendus dolorem laudantium sit consequuntur nostrum minima quibusdam facere fuga odit perferendis, accusamus vitae eaque illo ullam? Dolore quaerat fugiat perferendis nobis rerum id repellat in, rem fuga, dolorem quos. Impedit perspiciatis temporibus expedita, necessitatibus quidem quae, quia nisi eveniet dolorum ipsam labore nostrum eum recusandae et dolor natus consectetur vitae alias corporis molestias. Delectus laborum incidunt quisquam aut praesentium reprehenderit facilis laboriosam quas reiciendis molestiae consequatur explicabo voluptatem adipisci, provident amet non suscipit? Eius dolor, minima laborum eligendi sint repellendus quia maiores praesentium, numquam omnis assumenda fuga corrupti, deserunt veniam officiis eaque quisquam cumque.
-        </UContainer>
-    </div>
+  <div>
+    <section class="banner-section">
+      <UContainer>
+        <UCarousel
+          v-slot="{ item }"
+          :items="items"
+          :ui="{ item: 'basis-full' }"
+          class="rounded-lg overflow-hidden max-w-[796px] max-h-[235px] mx-auto"
+          indicators
+        >
+          <img :src="item" class="w-full" draggable="false" />
+        </UCarousel>
+      </UContainer>
+    </section>
+    <section class="category-section"></section>
+    <section class="product-section"></section>
+  </div>
 </template>
 
 <script setup>
-definePageMeta({
-    header: {
-        showProfile: true,
-    }
-})
+const items = [
+  "https://picsum.photos/1920/1080?random=1",
+  "https://picsum.photos/1920/1080?random=2",
+  "https://picsum.photos/1920/1080?random=3",
+  "https://picsum.photos/1920/1080?random=4",
+  "https://picsum.photos/1920/1080?random=5",
+  "https://picsum.photos/1920/1080?random=6",
+];
 </script>
 
 <style scoped>
-
+.banner-section {
+    @apply bg-white py-3 md:py-7;
+    /* @apply  */
+}
 </style>

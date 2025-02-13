@@ -1,36 +1,28 @@
 <template>
-    <div class="default-layout">
-        <LayoutsHeaderOrange/>
-        <main class="main-layout">
-            <slot />
-        </main>
-        <LayoutsFooter/>
-    </div>
+  <div class="default-layout">
+    <LayoutsHeaderOrange />
+    <main class="main-layout">
+      <slot />
+    </main>
+    <LayoutsFooter />
+  </div>
 </template>
 
 <script setup>
-import { LayoutsHeaderOrange } from '#components';
-
-
+import { LayoutsHeaderOrange } from "#components";
 </script>
 
 <style scoped>
 .default-layout {
-    @apply flex flex-col;
-    /* @apply w-full; */
-    @apply min-h-screen;
+  @apply flex flex-col;
+  /* @apply w-full; */
+  @apply min-h-screen;
 }
 
 .main-layout {
-    @apply flex-1;
-    @apply bg-slate-300;
+  @apply flex-1;
+  @apply bg-[#F5F5F5];
 }
-
-
-
-
-
-
 
 /* Layout Utama */
 /* .default-layout {

@@ -13,7 +13,7 @@ export default defineAppConfig({
             },
             color: {
                 white: {
-                    solid: "shadow-none ring-gray-200",
+                    solid: "shadow-none ring-gray-200 dark:bg-white dark:text-black",
                 },
             },
         },
@@ -34,8 +34,9 @@ export default defineAppConfig({
             rounded: "rounded-sm",
         },
         checkbox: {
-            label: 'font-normal text-black/80',
+            label: 'font-normal text-black/80 dark:text-black/80',
             base: 'disabled:bg-gray-100',
+            background: 'dark:bg-white',
             rounded: 'rounded-sm'
         },
         badge: {

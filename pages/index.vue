@@ -78,7 +78,7 @@ const items = [
 }
 
 .category-section-content {
-  @apply grid grid-cols-10;
+  @apply grid grid-cols-3 sm:grid-cols-6 md:grid-cols-10;
 }
 
 .product-section-header {
@@ -93,7 +93,7 @@ const items = [
 }
 
 .product-section-content {
-  @apply grid grid-cols-6 gap-1 md:gap-3;
+  @apply grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-1 md:gap-3;
   @apply mt-3;
 }
 </style>

@@ -81,10 +81,16 @@ const formattedDiscount = computed(() => formatNumber(props.discount));
 .product-card-footer {
   @apply mt-8;
   @apply flex justify-between gap-2 items-center;
+  @apply overflow-hidden flex-wrap;
 }
 
 .product-price p {
-  @apply text-primary font-medium text-base;
+  @apply text-primary text-[10px] md:font-medium md:text-base;
+  @apply truncate;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .product-price span {
   @apply text-xs dark:text-primary;

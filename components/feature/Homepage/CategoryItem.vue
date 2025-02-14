@@ -35,6 +35,6 @@ defineProps({
 }
 
 .category-item p {
-  @apply text-[8px] line-clamp-3 sm:line-clamp-none sm:text-xs md:text-sm text-center text-black/80;
+  @apply text-[10px] line-clamp-3 sm:line-clamp-none sm:text-xs md:text-sm text-center text-black/80;
 }
 </style>

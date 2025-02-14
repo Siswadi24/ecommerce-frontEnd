@@ -15,7 +15,7 @@ import { LayoutsHeaderOrange } from "#components";
 <style scoped>
 .default-layout {
   @apply flex flex-col;
-  /* @apply w-full; */
+  min-width: fit-content;
   @apply min-h-screen;
 }
 

@@ -56,8 +56,8 @@
       <div class="search-sort">
         <div class="search-sort-control">
           <p>Urutkan</p>
-          <UButton class="px-2 md:px-6">Termurah</UButton>
-          <UButton color="white" class="px-2 md:px-6">Termahal</UButton>
+          <UButton class="px-1.5 md:px-6">Termurah</UButton>
+          <UButton color="white" class="px-1.5 md:px-6">Termahal</UButton>
         </div>
         <div class="search-sort-pagination">
           <p><span>1</span>/17</p>
@@ -174,7 +174,7 @@ const items = ref(Array(55));
 
 .search-sort {
   @apply flex items-center gap-1 sm:gap-2 justify-between;
-  @apply px-5 py-2;
+  @apply px-1.5 md:px-5 py-2;
   @apply bg-black/5;
   @apply mt-2 sm:mt-4;
 }

@@ -24,7 +24,7 @@ export default defineNuxtConfig({
   },
   // vite: {
   //   server: {
-  //     allowedHosts: ["9904-125-160-99-154.ngrok-free.app"],
+  //     allowedHosts: ["e37b-36-72-217-237.ngrok-free.app"],
   //   },
   // },
 })

@@ -93,7 +93,7 @@
     </UCard>
     <UCard>
       <div class="product-seller">
-        <div class="flex gap-6 item-center w-96">
+        <div class="product-seller-avatar">
           <UAvatar :alt="dataDummy.seller.store_name" size="3xl" />
           <div>
             <h3 class="dark:text-black/80">
@@ -111,16 +111,16 @@
           </div>
         </div>
         <div class="w-[1px] bg-slate-200" />
-        <div class="grid grid-cols-2 items-center flex-1">
-          <div class="flex gap-2 text-sm">
+        <div class="product-seller-info">
+          <div class="product-seller-info-rating">
             <p class="text-black/40 w-36">Penilaian</p>
             <p class="text-primary">{{ dataDummy.seller.rating_count }}</p>
           </div>
-          <div class="flex gap-2 text-sm">
+          <div class="product-seller-info-joined">
             <p class="text-black/40 w-36">Bergabung</p>
             <p class="text-primary">{{ dataDummy.seller.join_date }}</p>
           </div>
-          <div class="flex gap-2 text-sm">
+          <div class="product-seller-info-product-count">
             <p class="text-black/40 w-36">Produk</p>
             <p class="text-primary">{{ dataDummy.seller.product_count }}</p>
           </div>
@@ -399,5 +399,25 @@ span.product-summary-item-description {
 
 .product-seller {
   @apply flex gap-1.5 md:gap-6 items-stretch;
+}
+
+.product-seller-avatar {
+  @apply flex gap-6 items-center w-96;
+}
+
+.product-seller-info {
+  @apply grid grid-cols-2 items-center flex-1;
+}
+
+.product-seller-info-rating {
+  @apply flex gap-2 text-sm;
+}
+
+.product-seller-info-joined {
+  @apply flex gap-2 text-sm;
+}
+
+.product-seller-info-product-count {
+  @apply flex gap-2 text-sm;
 }
 </style>

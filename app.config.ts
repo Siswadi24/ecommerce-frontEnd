@@ -20,6 +20,7 @@ export default defineAppConfig({
         card: {
             rounded: "rounded-none",
             ring: "ring-0",
+            background: "dark:bg-white"
         },
         verticalNavigation: {
             font: "font-normal",

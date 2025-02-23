@@ -70,7 +70,7 @@
             variant="soft"
             :ui="{
               variant: {
-                soft: 'dark:text-{color}-500 dark:bg-{color}-50',
+                soft: 'dark:text-{color}-500 dark:bg-{color}-50 dark:hover:bg-primary-50',
               },
             }"
             class="mt-6 md:mt-6"

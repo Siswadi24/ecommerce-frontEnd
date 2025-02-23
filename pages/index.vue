@@ -40,7 +40,7 @@
     </section>
 
     <UContainer>
-      <UButton color="white" class="font-normal px-1 md:px-28">
+      <UButton color="white" class="font-normal px-1 md:px-28 hover:text-white hover:bg-primary dark:hover:text-white dark:hover:bg-primary">
         Login Untuk Melihat Produk Lain
       </UButton>
     </UContainer>

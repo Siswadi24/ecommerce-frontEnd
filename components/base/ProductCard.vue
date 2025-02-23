@@ -55,7 +55,7 @@ const formattedDiscount = computed(() => formatNumber(props.discount));
   @apply border;
   @apply relative;
 
-  @apply hover:border-primary;
+  @apply hover:border-primary hover:shadow-lg;
 }
 
 .product-discount {

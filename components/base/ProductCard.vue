@@ -87,7 +87,7 @@ const formattedDiscount = computed(() => formatNumber(props.discount));
 }
 
 .product-price p {
-  @apply text-primary text-[10px] md:font-medium md:text-base;
+  @apply text-primary text-[10px] font-medium md:text-base;
   @apply truncate;
   max-width: 100%;
   white-space: nowrap;

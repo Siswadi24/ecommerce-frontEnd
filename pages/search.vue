@@ -90,38 +90,7 @@
         />
       </div>
       <div class="flex justify-center mt-1 sm:mt-4 md:mt-8">
-        <UPagination
-          v-model="page"
-          :page-count="5"
-          :total="items.length"
-          :inactive-button="{
-            variant: 'link',
-            class: 'text-black/40 hover:text-primary px-2 md:px-3 py-1',
-          }"
-          :active-button="{
-            class: 'px-2 md:px-3 py-1',
-          }"
-          :prev-button="{
-            variant: 'link',
-            class: 'text-black/40 hover:text-primary px-2 md:px-3 py-1',
-          }"
-          :next-button="{
-            variant: 'link',
-            class: 'text-black/40 hover:text-primary px-2 md:px-3 py-1',
-          }"
-          :ui="{
-            wrapper: 'space-x-1 sm:space-x-2 md:space-x-4',
-            base: 'text-xs sm:text-sm md:text-base lg:text-xl font-light dark:font-light',
-            default: {
-                prevButton: {
-                    icon: 'i-heroicons:chevron-left'
-                },
-                nextButton: {
-                    icon: 'i-heroicons:chevron-right'
-                }
-            }
-          }"
-        />
+        <BasePagination v-model="page" :total="itemsSearch.length" />
       </div>
     </div>
   </UContainer>
@@ -129,7 +98,7 @@
 
 <script setup>
 const page = ref(1);
-const items = ref(Array(55));
+const itemsSearch = ref(Array(55));
 </script>
 
 <style scoped>

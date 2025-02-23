@@ -29,18 +29,23 @@
         </div>
         <div class="product-section-content">
           <BaseProductCard
-          v-for="i in 20" :key="`product-${i}`"
+            v-for="i in 20"
+            :key="`product-${i}`"
             title="Kawabata Sepatu Sandal Kasual Slingback Mules Kawabata Sepatu Sandal
         Kasual Slingback Mules…"
             price="150000"
             image="https://s3-alpha-sig.figma.com/img/6cfd/a34d/e1ea9cc712058355bfb715d9424081d8?Expires=1740355200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=b31m2C~WBO7DoiVbiueyhLmiG3yiZc8eS5VLwBxIfxjsEc2KMInG-R7tmMMaDw7oCdVlzoLjyhfmtR6sjobG3un80Jj5tJguL8JLBobL5XBl3pRdF7uKnkeYw8aLNh44vPmFzkpJnGQwNb1BpIrghP~bUruDb-dESOuPnaR9MSMZvPQ77hZjCZa0rXIBQm--lzQxLssyhGYD2NPQ5NttrtFcsR4Epeo81gUSF3LesTHK3RemNn2~MYJKhxmRNqf7PrzUuCwvQT4scEHchOdLDY7u7fSA1dNWIUIwv2-oL3I7wXPtm-DLHoiFb~4z2CM~O25wZ~ABQlPEn8OrlQeoOQ__"
+            :slug="`products-${i}`"
           />
         </div>
       </UContainer>
     </section>
 
     <UContainer>
-      <UButton color="white" class="font-normal px-1 md:px-28 hover:text-white hover:bg-primary dark:hover:text-white dark:hover:bg-primary">
+      <UButton
+        color="white"
+        class="font-normal px-1 md:px-28 hover:text-white hover:bg-primary dark:hover:text-white dark:hover:bg-primary"
+      >
         Login Untuk Melihat Produk Lain
       </UButton>
     </UContainer>

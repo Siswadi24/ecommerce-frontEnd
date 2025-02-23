@@ -127,10 +127,154 @@
         </div>
       </div>
     </UCard>
+    <UCard>
+      <div class="spesification-product-section">
+        <div class="spesification-product-section-header-title">
+          <h3>Spesifikasi Produk</h3>
+        </div>
+        <div class="spesification-product-section-content-items">
+          <div class="spesification-product-section-content-items-list">
+            <p>Kategori</p>
+            <div>
+              <UBreadcrumb
+                :links="[
+                  {
+                    label: dataDummy.category.parent.name,
+                    to: '/',
+                  },
+                  {
+                    label: dataDummy.category.name,
+                    to: `/categories/${dataDummy.category.parent.slug}/${dataDummy.category.slug}`,
+                  },
+                ]"
+                :ui="{
+                  ...uiBreadcrumb,
+                  active: 'dark:text-[#0055AA] text-[#0055AA]',
+                  li: 'text-xs md:text-sm',
+                }"
+              />
+            </div>
+          </div>
+          <div class="spesification-product-section-content-items-list">
+            <p>Stok</p>
+            <div>{{ dataDummy.stock }}</div>
+          </div>
+          <div class="spesification-product-section-content-items-list">
+            <p>Dikirim dari</p>
+            <div>{{ dataDummy.seller.send_from.city.name }}</div>
+          </div>
+        </div>
+        <div class="spesification-product-section-header-title">
+          <h3>Deskripsi Produk</h3>
+        </div>
+        <div
+          v-text="dataDummy.description"
+          class="text-xs md:text-sm text-black/80 whitespace-pre-line"
+        />
+      </div>
+    </UCard>
+    <UCard>
+      <h3 class="text-lg font-normal text-black/80">Penilaian Produk</h3>
+      <div class="reviews-product-section">
+        <div class="reviews-product-rating-star">
+          <p class="text-primary text-sm md:text-lg">
+            <span class="text-xl md:text-3xl">{{ dataDummy.rating }}</span> dari
+            5
+          </p>
+          <BaseRating
+            :model-value="dataDummy.rating"
+            disabled
+            size="sm"
+            class="mt-2"
+          />
+        </div>
+        <div class="reviews-product-rating-filter">
+          <UButton
+            variant="outline"
+            size="xs"
+            class="min-w-24 text-xs md:text-sm justify-center dark:hover:bg-primary-50"
+          >
+            Semua
+          </UButton>
+          <div class="reviews-product-filter-category">
+            <UButton
+              v-for="(i, index) in 5"
+              :key="`rating-${i}`"
+              color="white"
+              size="xs"
+              class="min-w-24 text-xs md:text-sm justify-center dark:hover:bg-primary-50"
+            >
+              {{ i }} Bintang ({{ dataDummy.review_summary[index + 1] || 0 }})
+            </UButton>
+          </div>
+          <UButton
+            color="white"
+            size="xs"
+            class="min-w-24 text-xs md:text-sm justify-center"
+          >
+            Dengan Komentar ({{ dataDummy.review_summary.with_description }})
+          </UButton>
+          <UButton
+            color="white"
+            size="xs"
+            class="min-w-24 text-xs md:text-sm justify-center"
+          >
+            Dengan Media ({{ dataDummy.review_summary.with_attachment }})
+          </UButton>
+        </div>
+      </div>
+      <div class="reviews-comment-section">
+        <div v-for="i in 5" :key="`review-${i}`" class="flex gap-3 py-4">
+          <UAvatar alt="Irsyaad" size="lg" />
+          <div class="flex-1">
+            <p class="dark:text-black/80">Irsyaad</p>
+            <BaseRating :model-value="4" disabled class="mt-1" />
+            <div class="reviews-comment-date-variations-section">
+              <p>2024-04-10 05:27</p>
+              |
+              <p>Variasi: Vermont Camel, L</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex justify-end pt-5">
+        <BasePagination v-model="page" :total="reviews.length" />
+      </div>
+    </UCard>
+    <div class="product-other-seller-section">
+      <div class="product-other-seller-section-header">
+        <h4 class="uppercase text-black/55 font-medium">
+          Produk lain dari toko ini
+        </h4>
+        <UButton
+          variant="link"
+          class="font-thin"
+          :padded="false"
+          :to="`/shop/${dataDummy.seller.username}`"
+        >
+          Lihat Semua <UIcon name="i-heroicons:chevron-right" />
+        </UButton>
+      </div>
+      <div class="product-other-seller-section-content">
+        <BaseProductCard
+          v-for="product in dataDummy.other_product"
+          :key="`product-${product.uuid}`"
+          :title="product.name"
+          :price="product.price"
+          :image="product.image_url"
+          :slug="product.slug"
+          :sale="product.sale_count"
+          :discount="product.price_discount_percentage"
+        />
+      </div>
+    </div>
   </UContainer>
 </template>
 
 <script setup>
+const page = ref(1);
+const reviews = ref(Array(55));
+
 //Quantity Default
 const quantity = ref(1);
 
@@ -157,7 +301,8 @@ const dataDummy = computed(() => {
         description: null,
       },
     },
-    description: "Deskripsi produk 100. Lorem ipsum bla\n bla bla",
+    description:
+      "Vermont Polo Shirt \n Soft hand-feel and breathable characteristic \n\n Material : Grade A Premium Knit \n Model menggunakan size L \n Tinggi : 174 cm | Berat : 67 kg",
     weight: 9,
     length: 34,
     width: 34,
@@ -210,8 +355,8 @@ const dataDummy = computed(() => {
     ],
     review_summary: {
       1: 0,
-      2: 1,
-      3: 0,
+      2: 15,
+      3: 10,
       4: 0,
       5: 1,
       with_attachment: 2,
@@ -419,5 +564,75 @@ span.product-summary-item-description {
 
 .product-seller-info-product-count {
   @apply flex gap-2 text-sm;
+}
+
+.spesification-product-section {
+  @apply flex flex-col gap-6;
+}
+
+.spesification-product-section-header-title {
+  @apply bg-gray-50;
+  @apply p-3;
+}
+
+.spesification-product-section-header-title h3 {
+  @apply text-lg font-normal text-black/80 dark:text-black/80;
+}
+
+.spesification-product-section-content-items {
+  @apply flex flex-col gap-4;
+}
+
+.spesification-product-section-content-items-list {
+  @apply flex gap-2;
+}
+
+.spesification-product-section-content-items-list > p {
+  @apply text-black/40 text-xs md:text-sm w-40;
+}
+
+.spesification-product-section-content-items-list > div {
+  @apply text-xs md:text-sm font-normal text-black;
+}
+
+.reviews-product-section {
+  @apply mt-3;
+  @apply border border-primary-100/80 bg-primary-50/30 rounded-sm p-3 md:p-8 flex gap-8 items-center;
+}
+
+.reviews-product-rating-star {
+  @apply flex flex-col items-center;
+}
+
+.reviews-product-rating-filter {
+  @apply flex flex-wrap gap-2 items-center;
+}
+
+.reviews-product-filter-category {
+  @apply flex flex-row-reverse gap-2;
+}
+
+.reviews-comment-section {
+  @apply flex flex-col;
+  @apply mt-1;
+  @apply divide-y;
+}
+
+.reviews-comment-date-variations-section {
+  @apply flex gap-1;
+  @apply mt-0.5;
+  @apply text-black/55 text-xs;
+}
+
+.product-other-seller-section {
+  @apply flex flex-col gap-1.5 md:gap-4 mt-2;
+}
+
+.product-other-seller-section-header {
+  @apply flex justify-between gap-2 items-center;
+}
+
+.product-other-seller-section-content {
+  @apply grid grid-cols-6 gap-1.5 md:gap-3;
 }
 </style>

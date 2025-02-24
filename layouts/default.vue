@@ -9,7 +9,7 @@
 </template>
 
 <script setup>
-import { LayoutsHeaderOrange } from "#components";
+// import { LayoutsHeaderOrange } from "#components";
 </script>
 
 <style scoped>

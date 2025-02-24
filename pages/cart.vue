@@ -66,6 +66,8 @@ definePageMeta({
 .main-container {
   @apply py-5;
   @apply flex flex-col gap-5;
+  
+  @apply min-w-[800px];
 }
 
 .cart-header {
@@ -75,7 +77,7 @@ definePageMeta({
 
 .cart-items {
   @apply grid grid-cols-1 divide-y;
-  /* @apply overflow-x-auto; */
+  @apply overflow-x-auto;
 }
 
 .cart-items-product {

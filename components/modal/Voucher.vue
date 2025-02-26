@@ -27,6 +27,13 @@
                 placeholder="Masukkan kode Voucher"
                 class="flex-1"
                 size="lg"
+                :ui="{
+                  color: {
+                    white: {
+                      outline: 'dark:bg-white dark:text-black/85',
+                    },
+                  },
+                }"
               />
               <UButton color="white" size="sm" class="py-2 h-10">
                 PAKAI
@@ -53,7 +60,13 @@
                 </span>
                 <span class="text-primary text-sm mt-1">Azizah store</span>
               </div>
-              <URadio v-model="temporaryVoucher" :value="`voucher-${i}`" />
+              <URadio
+                v-model="temporaryVoucher"
+                :value="`voucher-${i}`"
+                :ui="{
+                  background: 'dark:bg-white',
+                }"
+              />
             </div>
           </label>
         </div>

@@ -48,6 +48,83 @@
         </div>
       </div>
     </UCard>
+
+    <UCard
+      :ui="{
+        header: {
+          padding: paddingCheckoutFooter,
+        },
+        body: {
+          padding: paddingCheckoutFooter,
+        },
+        footer: {
+          padding: paddingCheckoutFooter,
+        },
+        divide: 'divide-dashed',
+      }"
+    >
+      <template #header>
+        <div class="header-voucher-section">
+          <div class="header-voucher-text-section">
+            <IconVoucher />
+            <p class="dark:text-black/85">Voucher Putra's Store</p>
+          </div>
+          <UButton variant="link" color="blue" @click="openVoucher = true">
+            Gunakan/masukan voucher
+          </UButton>
+        </div>
+      </template>
+
+      <template #default>
+        <div class="voucher-coin-section">
+          <div class="voucher-coin-item-section">
+            <UCheckbox>
+              <template #label>
+                <div class="voucher-coin-icon-section">
+                  <IconCoin />
+                  <span class="dark:text-black/85 font-medium"
+                    >Koin Putra's Store</span
+                  >
+                </div>
+              </template>
+            </UCheckbox>
+            <span class="font-medium text-xs sm:text-sm text-gray-500"
+              >Saldo Koin Tidak Mencukupi
+            </span>
+            <div class="voucher-coin-amount-section">
+              <span class="text-gray-300">Rp 0</span>
+            </div>
+          </div>
+        </div>
+      </template>
+
+      <template #footer>
+        <div class="footer-price-result-section">
+          <div class="footer-price-result-section-header">
+            <div>
+              <div class="footer-price-product">
+                <span class="dark:text-black/85">Total ({{ 1 }} produk):</span>
+                <span class="text-primary font-normal text-xs md:text-2xl">
+                  {{ formatNumber(195000) }}
+                </span>
+              </div>
+              <div class="footer-price-product-discount">
+                <span class="dark:text-black/85">Hemat</span>
+                <span class="text-primary">104RB</span>
+              </div>
+            </div>
+            <UButton
+              class="px-9 min-w-52 justify-center"
+              @click="handleCheckout"
+            >
+              Checkout
+            </UButton>
+          </div>
+        </div>
+      </template>
+    </UCard>
+
+    <ModalVoucher v-model="openVoucher" />
   </UContainer>
 </template>
 
@@ -60,13 +137,25 @@ definePageMeta({
     title: "Keranjang Belanja",
   },
 });
+
+const openVoucher = ref(false);
+
+const paddingCheckoutFooter = "py-1.5 px-2 sm:py-2 sm:px-4 md:py-3 md:px-7";
+
+const router = useRouter();
+
+function handleCheckout() {
+  //Hit API
+  console.log("To Halaman Checkout");
+  router.push("/checkout");
+}
 </script>
 
 <style scoped>
 .main-container {
   @apply py-5;
   @apply flex flex-col gap-5;
-  
+
   @apply min-w-[800px];
 }
 
@@ -92,5 +181,47 @@ definePageMeta({
 
 .cart-items-product-variations {
   @apply w-40;
+}
+
+.header-voucher-section {
+  @apply flex justify-end gap-40;
+}
+
+.header-voucher-text-section {
+  @apply flex gap-1 items-center;
+  @apply font-medium;
+}
+
+.voucher-coin-section {
+  @apply flex justify-end;
+}
+
+.voucher-coin-item-section {
+  @apply flex items-center gap-5;
+}
+
+.voucher-coin-icon-section {
+  @apply flex gap-1.5 sm:gap-2;
+}
+
+.voucher-coin-amount-section {
+  @apply flex flex-1 justify-end;
+  @apply min-w-48;
+}
+
+.footer-price-result-section {
+  @apply flex justify-end items-center;
+}
+
+.footer-price-result-section-header {
+    @apply flex gap-4;
+}
+
+.footer-price-product {
+  @apply flex items-center gap-1;
+}
+
+.footer-price-product-discount {
+  @apply flex gap-6 text-sm font-normal justify-end;
 }
 </style>

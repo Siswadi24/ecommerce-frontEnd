@@ -113,10 +113,7 @@
                 <span class="text-primary">104RB</span>
               </div>
             </div>
-            <UButton
-              class="px-9 min-w-52 justify-center"
-              @click="handleCheckout"
-            >
+            <UButton class="button-checkout-section" @click="handleCheckout">
               Checkout
             </UButton>
           </div>
@@ -173,6 +170,7 @@ function handleCheckout() {
   @apply flex items-center gap-1.5 sm:gap-2.5;
   @apply text-gray-500 text-xs sm:text-sm font-normal;
   @apply py-2.5 sm:py-5;
+  @apply hover:shadow-lg hover:font-extrabold dark:hover:font-extrabold dark:hover:shadow;
 }
 
 .cart-items-product-name {
@@ -214,7 +212,7 @@ function handleCheckout() {
 }
 
 .footer-price-result-section-header {
-    @apply flex gap-4;
+  @apply flex gap-4;
 }
 
 .footer-price-product {
@@ -223,5 +221,10 @@ function handleCheckout() {
 
 .footer-price-product-discount {
   @apply flex gap-6 text-sm font-normal justify-end;
+}
+
+.button-checkout-section {
+  @apply px-9 min-w-52 justify-center;
+  @apply dark:text-white;
 }
 </style>

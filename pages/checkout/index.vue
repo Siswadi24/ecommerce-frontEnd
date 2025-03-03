@@ -122,35 +122,21 @@
     </div>
 
     <!-- Desktop Version -->
-    <div class="hidden sm:block bg-white divide-y divide-dashed">
+    <div class="desktop-version-main-section">
       <div class="p-6">
-        <div class="flex justify-between items-center">
+        <div class="dekstop-version-header-title">
           <span class="w-[33%] text-xs md:text-lg text-black/85 font-normal">
             Produk Dipesan
           </span>
           <span class="w-[16%]" />
-          <span
-            class="w-[16%] text-xs sm:text-sm font-normal text-right text-black/55"
-          >
-            Harga Satuan
-          </span>
-          <span
-            class="w-[16%] text-xs sm:text-sm font-normal text-right text-black/55"
-          >
-            Jumlah
-          </span>
-          <span
-            class="w-[16%] text-xs sm:text-sm font-normal text-right text-black/55"
-          >
-            Subtotal Produk
-          </span>
+          <span class="w-[16%]"> Harga Satuan </span>
+          <span class="w-[16%]"> Jumlah </span>
+          <span class="w-[16%]"> Subtotal Produk </span>
         </div>
         <p class="text-xs sm:text-sm text-black/85 my-2 sm:my-4">Nama Toko</p>
         <div>
-          <div class="flex justify-between items-center gap-2 sm:gap-4">
-            <div
-              class="w-[33%] text-xs md:text-lg text-black/85 font-normal flex gap-2 items-center"
-            >
+          <div class="dekstop-version-header-product">
+            <div class="dekstop-version-header-product-title">
               <img
                 src="https://picsum.photos/1920/1080?random=1"
                 alt="product"
@@ -165,29 +151,17 @@
                 Variasi: Vermont Camel, L
               </p>
             </div>
-            <div
-              class="w-[16%] text-xs sm:text-sm font-normal text-right text-black/55"
-            >
-              Rp{{ formatNumber(249000) }}
-            </div>
-            <div
-              class="w-[16%] text-xs sm:text-sm font-normal text-right text-black/55"
-            >
+            <div class="w-[16%]">Rp{{ formatNumber(249000) }}</div>
+            <div class="w-[16%]">
               {{ formatNumber(15) }}
             </div>
-            <div
-              class="w-[16%] text-xs sm:text-sm font-normal text-right text-black/55"
-            >
-              Rp{{ formatNumber(375000) }}
-            </div>
+            <div class="w-[16%]">Rp{{ formatNumber(375000) }}</div>
           </div>
         </div>
       </div>
 
-      <div class="flex divide-x divide-dashed bg-blue-50/20">
-        <div
-          class="flex gap-1.5 sm:gap-4 py-1.5 sm:py-4 px-1.5 sm:px-6 items-center w-[200px] md:w-[480px]"
-        >
+      <div class="dekstop-version-body-section">
+        <div class="dekstop-version-body-section-message-input">
           <span class="text-xs sm:text-base dark:text-black/85 font-normal">
             Pesan:
           </span>
@@ -203,11 +177,11 @@
             }"
           />
         </div>
-        <div class="flex-1 divide-y divide-dashed">
-          <div class="grid grid-cols-3 px-6 py-9 font-medium">
+        <div class="dekstop-version-body-section-courier">
+          <div class="dekstop-version-title-courier">
             <p class="text-xs sm:text-sm text-black/80">Opsi Pengiriman</p>
             <div>
-              <div class="flex justify-between gap-1 sm:gap-2 items-center">
+              <div class="dekstop-version-title-courier-option">
                 <p class="text-xs sm:text-sm text-black/80">REG</p>
                 <UButton
                   variant="link"
@@ -232,11 +206,11 @@
               class="hover:no-underline"
               @click="openCourier = true"
             >
-              <div class="flex items-center gap-1 text-green-700">
+              <div class="dekstop-version-courier-warranty">
                 <IconTruck />
                 <span class="text-xs sm:text-sm">Garansi tiba: 13-15 Ags</span>
               </div>
-              <div class="flex items-center">
+              <div class="dekstop-version-courier-type">
                 <span class="text-xs sm:text-sm text-gray-400">
                   dengan J&T Jemari
                 </span>
@@ -247,7 +221,7 @@
         </div>
       </div>
 
-      <div class="flex justify-end px-6 py-4 items-center gap-3 bg-blue-50/20">
+      <div class="dekstop-version-footer-section">
         <span class="text-xs sm:text-sm text-black/55">
           Total Pesanan ({{ 1 }} produk):
         </span>
@@ -458,6 +432,62 @@ function handlePayment() {
 
 .mobile-version-order-section {
   @apply flex justify-end px-4 sm:px-6 py-4 items-center gap-2 bg-blue-50/20;
+}
+
+.desktop-version-main-section {
+  @apply hidden sm:block bg-white divide-y divide-dashed;
+}
+
+.dekstop-version-header-title {
+  @apply flex justify-between items-center;
+}
+
+.dekstop-version-header-title span:nth-child(n + 3) {
+  @apply text-xs sm:text-sm font-normal text-right text-black/55;
+}
+
+.dekstop-version-header-product {
+  @apply flex justify-between items-center gap-2 sm:gap-4;
+}
+
+.dekstop-version-header-product div:nth-child(n + 3) {
+  @apply text-xs sm:text-sm font-medium text-right text-black/90;
+}
+
+.dekstop-version-header-product-title {
+  @apply w-[33%] text-xs md:text-lg text-black/85 font-normal flex gap-2 items-center;
+}
+
+.dekstop-version-body-section {
+  @apply flex divide-x divide-dashed bg-blue-50/20;
+}
+
+.dekstop-version-body-section-message-input {
+  @apply flex gap-1.5 sm:gap-4 py-1.5 sm:py-4 px-1.5 sm:px-6 items-center w-[200px] md:w-[480px];
+}
+
+.dekstop-version-body-section-courier {
+  @apply flex-1 divide-y divide-dashed;
+}
+
+.dekstop-version-title-courier {
+  @apply grid grid-cols-3 px-6 py-9 font-medium;
+}
+
+.dekstop-version-title-courier-option {
+  @apply flex justify-between gap-1 sm:gap-2 items-center;
+}
+
+.dekstop-version-courier-warranty {
+  @apply flex items-center gap-1 text-green-700;
+}
+
+.dekstop-version-courier-type {
+  @apply flex items-center;
+}
+
+.dekstop-version-footer-section {
+  @apply flex justify-end px-6 py-4 items-center gap-3 bg-blue-50/20;
 }
 
 .price-summary tr:not(:first-child) td {

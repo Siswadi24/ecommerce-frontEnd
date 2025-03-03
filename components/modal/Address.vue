@@ -22,6 +22,7 @@
               wrapper: 'py-4',
               label: 'w-full',
               inner: 'flex-1',
+              color: 'dark:bg-white dark:text-primary',
             }"
           >
             <template #label="{ option }">

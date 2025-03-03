@@ -1,5 +1,5 @@
 <template>
-  <div class="grid grid-cols-1 gap-1">
+  <div class="grid grid-cols-1 gap-1 dark:text-black/85">
     <slot
       v-for="(item, index) in items"
       :key="`radio-card-item-${item.value}-${index}`"

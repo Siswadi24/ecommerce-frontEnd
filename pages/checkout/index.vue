@@ -1,11 +1,11 @@
 <template>
-  <UContainer class="flex flex-col gap-2 sm:gap-5 py-2 sm:py-5">
+  <UContainer class="main-container">
     <UCard class="address-section">
-      <div class="flex gap-1 sm:gap-2 text-primary items-center">
+      <div class="address-section-title">
         <UIcon name="i-heroicons:map-pin-16-solid" />
         <span class="text-xs sm:text-base">Alamat Pengiriman</span>
       </div>
-      <div class="flex gap-10 mt-5 items-center text-xs sm:text-base">
+      <div class="address-section-content">
         <div>
           <p class="font-bold text-black/80">Siswadi Perdana</p>
           <p class="font-bold text-black/80">(+6285666775430)</p>
@@ -23,38 +23,21 @@
     </UCard>
 
     <!-- Mobile Version -->
-    <div class="sm:hidden bg-white divide-y divide-dashed">
+    <div class="mobile-version-main-section">
       <!-- Header -->
       <div class="p-4 sm:p-6">
-        <div class="hidden sm:flex justify-between items-center">
-          <span class="w-1/3 text-sm sm:text-lg text-black/85 font-normal">
-            Produk Dipesan
-          </span>
-          <span class="w-1/6 text-right text-xs sm:text-sm text-black/55"
-            >Harga Satuan</span
-          >
-          <span class="w-1/6 text-right text-xs sm:text-sm text-black/55"
-            >Jumlah</span
-          >
-          <span class="w-1/6 text-right text-xs sm:text-sm text-black/55"
-            >Subtotal Produk</span
-          >
-        </div>
-
         <!-- Nama Toko -->
         <p class="text-sm text-black/85 my-4">Nama Toko</p>
 
         <!-- Produk -->
-        <div
-          class="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6"
-        >
+        <div class="mobile-version-header-title">
           <img
             src="https://picsum.photos/1920/1080?random=1"
             alt="product"
             class="w-16 h-16 sm:w-20 sm:h-20 object-cover rounded"
           />
 
-          <div class="flex-1">
+          <div class="mobile-version-header-title-product">
             <p class="text-xs sm:text-sm font-semibold text-black/80">
               PRIVACY MATTE/ CLEAR GLOSSY / PRIVACY GLOSSY
             </p>
@@ -62,36 +45,22 @@
           </div>
 
           <!-- Harga, Jumlah, Subtotal -->
-          <div class="flex sm:hidden justify-between w-full mt-4">
+          <div class="mobile-version-price-product-section">
             <p class="text-xs text-black/55">
-              Harga: Rp{{ formatNumber(249000) }}
+              Harga Satuan: Rp{{ formatNumber(249000000) }}
             </p>
             <p class="text-xs text-black/55">Jumlah: {{ formatNumber(15) }}</p>
             <p class="text-xs text-black/55">
-              Subtotal: Rp{{ formatNumber(375000) }}
-            </p>
-          </div>
-
-          <div class="hidden sm:flex justify-between w-2/3">
-            <p class="w-1/3 text-right text-sm text-black/55">
-              Rp{{ formatNumber(249000) }}
-            </p>
-            <p class="w-1/3 text-right text-sm text-black/55">
-              {{ formatNumber(15) }}
-            </p>
-            <p class="w-1/3 text-right text-sm text-black/55">
-              Rp{{ formatNumber(375000) }}
+              Subtotal Produk: Rp{{ formatNumber(375000000) }}
             </p>
           </div>
         </div>
       </div>
 
       <!-- Input Pesan dan Pengiriman -->
-      <div
-        class="flex flex-col sm:flex-row divide-y sm:divide-y-0 sm:divide-x divide-dashed bg-blue-50/20"
-      >
+      <div class="mobile-version-message-user-section">
         <!-- Input Pesan -->
-        <div class="p-4 sm:p-6 flex items-center gap-4 w-full sm:w-[480px]">
+        <div class="mobile-version-message-user-section-input">
           <span class="text-sm font-normal text-black/85">Pesan:</span>
           <UInput
             placeholder="(Optional) Tinggalkan Pesan ke Penjual"
@@ -108,7 +77,7 @@
 
         <!-- Info Pengiriman -->
         <div class="p-4 sm:p-6 flex-1">
-          <div class="flex justify-between items-center mb-2">
+          <div class="mobile-version-courier">
             <p class="text-sm text-black/80">Opsi Pengiriman</p>
             <UButton
               variant="link"
@@ -130,7 +99,7 @@
             @click="openCourier = true"
             :padded="false"
           >
-            <div class="flex items-center gap-1 text-green-700">
+            <div class="mobile-version-courier-option">
               <IconTruck />
               <span class="text-xs sm:text-sm"
                 >J&T Jemari - Garansi tiba: 13-15 Ags
@@ -142,14 +111,12 @@
       </div>
 
       <!-- Total Pesanan -->
-      <div
-        class="flex justify-end px-4 sm:px-6 py-4 items-center gap-3 bg-blue-50/20"
-      >
+      <div class="mobile-version-order-section">
         <span class="text-sm text-black/55">
-          Total Pesanan ({{ 1 }} produk):
+          Total Pesanan ({{ 100000 }} produk):
         </span>
         <span class="text-sm font-medium text-primary">
-          Rp{{ formatNumber(375000) }}
+          Rp{{ formatNumber(375000000000000000000000000000) }}
         </span>
       </div>
     </div>
@@ -445,6 +412,54 @@ function handlePayment() {
 </script>
 
 <style scoped>
+.main-container {
+  @apply flex flex-col gap-2 sm:gap-5 py-2 sm:py-5;
+}
+
+.address-section-title {
+  @apply flex gap-1 sm:gap-2 text-primary items-center;
+}
+
+.address-section-content {
+  @apply flex gap-10 mt-5 items-center text-xs sm:text-base;
+}
+
+.mobile-version-main-section {
+  @apply sm:hidden bg-white divide-y divide-dashed;
+}
+
+.mobile-version-header-title {
+  @apply flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6;
+}
+
+.mobile-version-header-title-product {
+  @apply flex-1;
+}
+
+.mobile-version-price-product-section {
+  @apply flex sm:hidden justify-between w-full mt-4 gap-1.5;
+}
+
+.mobile-version-message-user-section {
+  @apply flex flex-col sm:flex-row divide-y sm:divide-y-0 sm:divide-x divide-dashed bg-blue-50/20;
+}
+
+.mobile-version-message-user-section-input {
+  @apply p-4 sm:p-6 flex items-center gap-4 w-full sm:w-[480px];
+}
+
+.mobile-version-courier {
+  @apply flex justify-between items-center mb-2;
+}
+
+.mobile-version-courier-option {
+  @apply flex items-center gap-1 text-green-700;
+}
+
+.mobile-version-order-section {
+  @apply flex justify-end px-4 sm:px-6 py-4 items-center gap-2 bg-blue-50/20;
+}
+
 .price-summary tr:not(:first-child) td {
   @apply py-3;
 }

@@ -221,12 +221,19 @@
         <div
           class="flex gap-1.5 sm:gap-4 py-1.5 sm:py-4 px-1.5 sm:px-6 items-center w-[200px] md:w-[480px]"
         >
-          <span class="text-xs sm:text-base dark:text-black/85 font-normal"
-            >Pesan:</span
-          >
+          <span class="text-xs sm:text-base dark:text-black/85 font-normal">
+            Pesan:
+          </span>
           <UInput
             placeholder="(Optional) Tinggalkan Pesan ke Penjual"
             class="flex-1"
+            :ui="{
+              color: {
+                white: {
+                  outline: 'dark:bg-white dark:text-black/85',
+                },
+              },
+            }"
           />
         </div>
         <div class="flex-1 divide-y divide-dashed">
@@ -263,9 +270,9 @@
                 <span class="text-xs sm:text-sm">Garansi tiba: 13-15 Ags</span>
               </div>
               <div class="flex items-center">
-                <span class="text-xs sm:text-sm text-gray-400"
-                  >dengan J&T Jemari</span
-                >
+                <span class="text-xs sm:text-sm text-gray-400">
+                  dengan J&T Jemari
+                </span>
                 <UIcon name="i-heroicons:chevron-right" class="text-gray-400" />
               </div>
             </UButton>
@@ -274,12 +281,12 @@
       </div>
 
       <div class="flex justify-end px-6 py-4 items-center gap-3 bg-blue-50/20">
-        <span class="text-xs sm:text-sm text-black/55"
-          >Total Pesanan ({{ 1 }} produk):</span
-        >
-        <span class="text-xs sm:text-sm text-primary font-medium"
-          >Rp{{ formatNumber(375000) }}</span
-        >
+        <span class="text-xs sm:text-sm text-black/55">
+          Total Pesanan ({{ 1 }} produk):
+        </span>
+        <span class="text-xs sm:text-sm text-primary font-medium">
+          Rp{{ formatNumber(375000) }}
+        </span>
       </div>
     </div>
 

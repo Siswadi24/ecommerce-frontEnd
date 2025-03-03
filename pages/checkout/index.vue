@@ -233,12 +233,8 @@
 
     <UCard>
       <template #header>
-        <div class="flex justify-between gap-2">
-          <div
-            class="flex gap-2 items-center font-normal text-xs sm:text-lg dark:text-black/85"
-          >
-            <IconVoucher /> Voucher Syopo
-          </div>
+        <div class="header-voucher-section">
+          <div class="header-voucher-title"><IconVoucher /> Voucher Syopo</div>
           <UButton
             :padded="false"
             variant="link"
@@ -251,17 +247,15 @@
         </div>
       </template>
       <template #default>
-        <div class="flex gap-1.5 sm:gap-7 items-center">
-          <div
-            class="flex gap-1 sm:gap-2 items-center font-normal text-xs sm:text-lg"
-          >
+        <div class="body-coin-section">
+          <div class="body-coin-section-title">
             <IconCoin />
             <p class="text-black/85 text-xs">Koin Syopo</p>
           </div>
-          <p class="font-medium text-sm text-gray-400">
+          <p class="font-medium text-xs sm:text-sm text-gray-400">
             Koin tidak dapat ditukarkan
           </p>
-          <div class="flex-1 flex justify-end items-center gap-2">
+          <div class="body-coin-section-value">
             <span class="text-gray-300 text-xs sm:text-base">[-Rp0]</span>
             <UCheckbox disabled />
           </div>
@@ -270,8 +264,8 @@
     </UCard>
 
     <div class="bg-white">
-      <div class="p-6 flex gap-14">
-        <span class="text-black/80 text-sm sm:text-base">Pilih Pembayaran</span>
+      <div class="payment-option-section">
+        <span class="text-black/80 text-xs sm:text-base">Pilih Pembayaran</span>
         <URadioGroup
           v-model="paymentSelected"
           :options="paymentList"
@@ -281,41 +275,38 @@
           }"
         >
           <template #label="{ option }">
-            <div class="flex gap-4 items-center">
-              <div
-                class="w-12 h-12 border rounded-sm p-2 flex justify-center items-center"
-              >
+            <div class="payment-option-section-items">
+              <div class="payment-option-section-items-image">
                 <img :src="option.image" />
               </div>
-              <p class="font-normal text-sm">{{ option.label }}</p>
+              <p class="font-normal text-xs sm:text-sm">{{ option.label }}</p>
             </div>
           </template>
         </URadioGroup>
       </div>
-      <div
-        class="border-t border-gray-100 p-6 flex justify-end bg-yellow-50/30"
-      >
+
+      <div class="price-footer-section">
         <table class="price-summary">
           <tbody>
             <tr>
               <td>
-                <span class="text-sm text-black/55">Subtotal untuk Produk</span>
+                <span class="text-xs sm:text-sm text-black/55">Subtotal untuk Produk</span>
               </td>
-              <td class="text-right min-w-44 text-black/80">
+              <td class="text-xs sm:text-base text-right min-w-44 text-black/80">
                 Rp{{ formatNumber(1000) }}
               </td>
             </tr>
             <tr>
               <td>
-                <span class="text-sm text-black/55">Total Ongkos Kirim</span>
+                <span class="text-xs sm:text-sm text-black/55">Total Ongkos Kirim</span>
               </td>
-              <td class="text-right min-w-44 text-black/80">
+              <td class="text-xs sm:text-base text-right min-w-44 text-black/80">
                 Rp{{ formatNumber(1000) }}
               </td>
             </tr>
             <tr>
-              <td><span class="text-sm text-black/55">Biaya Layanan</span></td>
-              <td class="text-right min-w-44 text-black/80">
+              <td><span class="text-xs sm:text-sm text-black/55">Biaya Layanan</span></td>
+              <td class="text-xs sm:text-base text-right min-w-44 text-black/80">
                 Rp{{ formatNumber(1000) }}
               </td>
             </tr>
@@ -324,7 +315,7 @@
                 <span class="text-sm text-black/55">Total Pembayaran</span>
               </td>
               <td
-                class="text-right min-w-44 text-black/80 text-xl font-semibold sm:font-normal sm:text-3xl text-primary"
+                class="text-right min-w-44 text-black/80 font-semibold sm:font-normal text-xl sm:text-3xl text-primary"
               >
                 Rp{{ formatNumber(1000) }}
               </td>
@@ -332,9 +323,8 @@
           </tbody>
         </table>
       </div>
-      <div
-        class="border-t border-gray-100 border-dashed p-6 flex justify-end bg-yellow-50/30"
-      >
+
+      <div class="button-order-section">
         <UButton
           class="w-52 justify-center dark:text-white"
           @click="handlePayment"
@@ -490,14 +480,57 @@ function handlePayment() {
   @apply flex justify-end px-6 py-4 items-center gap-3 bg-blue-50/20;
 }
 
+.header-voucher-section {
+  @apply flex justify-between gap-2;
+}
+
+.header-voucher-title {
+  @apply flex gap-1.5 sm:gap-2 items-center font-normal text-xs sm:text-lg dark:text-black/85;
+}
+
+.body-coin-section {
+  @apply flex gap-1.5 sm:gap-7 items-center;
+}
+
+.body-coin-section-title {
+  @apply flex gap-1 sm:gap-2 items-center font-normal text-xs sm:text-lg;
+}
+
+.body-coin-section-value {
+  @apply flex-1 flex justify-end items-center gap-2;
+}
+
+.payment-option-section {
+  @apply flex p-6 gap-14;
+}
+
+.payment-option-section-items {
+  @apply flex gap-2 sm:gap-4 items-center;
+}
+
+.payment-option-section-items-image {
+  @apply w-9 sm:w-12 h-9 sm:h-12 border rounded-sm p-2 flex justify-center items-center;
+}
+
+.price-footer-section {
+  @apply flex justify-end p-6 bg-yellow-50/30;
+  @apply border-t border-gray-100;
+}
+
 .price-summary tr:not(:first-child) td {
-  @apply py-3;
+  @apply py-1 sm:py-3;
 }
 
 .price-summary tr:first-child td {
-  @apply pb-3;
+  @apply py-1 sm:pb-3;
 }
 .price-summary tr:last-child td {
-  @apply pb-0 pt-10;
+  @apply pb-0 pt-10 border-t border-dashed border-gray-100;
+}
+
+.button-order-section {
+  @apply flex p-6 justify-end;
+  @apply border-t border-gray-100 border-dashed;
+  @apply bg-yellow-50/30;
 }
 </style>

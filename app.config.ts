@@ -36,7 +36,7 @@ export default defineAppConfig({
         },
         checkbox: {
             label: 'font-normal text-black/80 dark:text-black/80',
-            base: 'disabled:bg-gray-100',
+            base: 'disabled:bg-gray-100 dark:disabled:bg-gray-100',
             background: 'dark:bg-white',
             rounded: 'rounded-sm'
         },

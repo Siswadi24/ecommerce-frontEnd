@@ -43,9 +43,9 @@
       <template #footer>
         <div class="flex justify-end gap-2">
           <UButton color="white" @click="isOpen = false">Nanti Saja</UButton>
-          <UButton :disabled="!courierSelected" @click="handleConfirmCourier"
-            >Konfirmasi</UButton
-          >
+          <UButton :disabled="!courierSelected" @click="handleConfirmCourier">
+            Konfirmasi
+          </UButton>
         </div>
       </template>
     </UCard>

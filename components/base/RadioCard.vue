@@ -11,7 +11,7 @@
   </div>
 </template>
   
-  <script setup>
+<script setup>
 defineProps({
   items: {
     type: Array,
@@ -33,5 +33,5 @@ function handleSelect(value) {
 }
 </script>
   
-  <style lang="scss" scoped></style>
+<style lang="scss" scoped></style>
   

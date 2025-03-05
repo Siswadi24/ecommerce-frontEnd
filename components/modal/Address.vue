@@ -93,10 +93,10 @@ const addressList = computed(() => [
   },
 ]);
 
-function handleConfirmAddress() {
+function handleConfirmCourier() {
   isOpen.value = false;
-  model.value = addressList.value.find(
-    (item) => item.value === addressSelected.value
+  model.value = items.value.find(
+    (item) => item.value === courierSelected.value
   );
 }
 </script>

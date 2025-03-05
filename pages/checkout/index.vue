@@ -453,7 +453,7 @@ function handlePayment() {
 }
 
 .dekstop-version-body-section-message-input {
-  @apply flex gap-1.5 sm:gap-4 py-1.5 sm:py-4 px-1.5 sm:px-6 items-center w-[200px] md:w-[480px];
+  @apply flex gap-1.5 sm:gap-4 py-1.5 sm:py-4 px-1.5 sm:px-6 w-[200px] md:w-[480px];
 }
 
 .dekstop-version-body-section-courier {

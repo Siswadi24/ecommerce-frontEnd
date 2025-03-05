@@ -1,6 +1,6 @@
 <template>
     <div>
-        product
+        <h1>i-heroicons:inbox-stack</h1>
     </div>
 </template>
 

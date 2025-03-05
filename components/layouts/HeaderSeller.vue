@@ -6,7 +6,7 @@
                 <div class="flex gap-1 md:gap-2 items-center">
                     <UAvatar alt="Siswadi Perdana Putra"/>
                     <p>Siswadi Perdana</p>
-                    <UIcon name="i-heroicons-chevron-down-20-solid" class="w-1 md:w-4 h-1 md:h-4 transition-all" :class="[open && 'rotate-180']"/>
+                    <UIcon name="i-heroicons-chevron-down-20-solid" class="w-4 md:w-4 h-4 md:h-4 transition-all" :class="[open && 'rotate-180']"/>
                 </div>
             </template>
         </UDropdown>
@@ -41,7 +41,7 @@ const profileItems = [
 const ui = {
     active: 'dark:text-slate-800 text-slate-800',
     inactive: 'text-black/50',
-    base: 'font-normal text-sm md:text-lg'
+    base: 'font-normal text-xs sm:text-sm md:text-lg'
 }
 </script>
 
@@ -51,5 +51,6 @@ const ui = {
     @apply shadow;
     @apply fixed top-0 left-0 right-0 z-50;
     @apply flex justify-between items-center gap-1 md:gap-2;
+    @apply text-xs md:text-base;
 }
 </style>

@@ -201,7 +201,7 @@
         </p>
         <div class="flex">
           <span class="footer-text">Negara:</span>
-          <div class="sm:grid grid-cols-2 lg:flex divide-x divide-black/20">
+          <div class="grid grid-cols-2 sm:grid-cols-2 lg:flex sm:divide-x divide-black/20">
             <UButton
               v-for="country in country"
               :key="country"

@@ -1,9 +1,16 @@
 <template>
   <section class="bg-primary">
     <UContainer class="grid grid-cols-1 sm:grid-cols-2 h-full py-10 sm:py-20">
-      <div class="flex flex-col gap-5 py-2 text-white text-center sm:flex justify-center items-center">
+      <div
+        class="flex flex-col gap-5 py-2 text-white text-center sm:flex justify-center items-center"
+      >
         <div class="flex flex-col gap-14 text-white text-center">
-          <h1 class="text-base sm:text-7xl dark:text-white">Putra's <span class="text-primary-200 sm:text-white hover:text-primary-200">Store</span></h1>
+          <h1 class="text-base sm:text-7xl dark:text-white">
+            Putra's
+            <span class="text-primary-200 sm:text-white hover:text-primary-200"
+              >Store</span
+            >
+          </h1>
           <p class="text-xs sm:text-base dark:text-white">
             Tempat Belanja Online No. 1<br />untuk semua kalangan
           </p>

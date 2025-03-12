@@ -22,7 +22,7 @@
           }"
           class="sm:w-96"
         >
-          <h2 class="dark:text-black text-sm sm:text-base">Log in</h2>
+          <h2 class="dark:text-black text-sm sm:text-base">Daftar</h2>
           <form class="mt-7 space-y-7">
             <UFormGroup
               :ui="{
@@ -37,40 +37,27 @@
                     white: { outline: 'dark:bg-white dark:text-black/85' },
                   },
                   size: {
-                    xs: 'text-xs sm:text-sm',
+                    lg: 'text-xs sm:text-sm',
                   },
                   padding: {
                     xs: 'px-3 py-2',
                   },
                 }"
-                placeholder="Masukan No. Handphone/Email"
-                size="xs"
+                placeholder="Masukan Email"
+                size="lg"
               />
             </UFormGroup>
-            <UFormGroup
+
+            <UButton
               :ui="{
-                size: {
-                  xs: '2xs',
+                variant: {
+                  solid: 'dark:text-white',
                 },
               }"
+              block
+              class="uppercase text-xs sm:text-sm hover:shadow-lg hover:rounded-lg"
+              >Berikutnya</UButton
             >
-              <BaseInputPassword
-                v-model="password"
-                placeholder="Masukan password anda"
-              />
-            </UFormGroup>
-            <div>
-              <UButton block>Log in</UButton>
-              <UButton
-                variant="link"
-                color="blue"
-                :padded="false"
-                class="mt-2"
-                to="/forgot-password"
-              >
-                Lupa password
-              </UButton>
-            </div>
           </form>
 
           <UDivider
@@ -85,27 +72,27 @@
             Google
           </UButton>
           <p class="text-sm font-normal text-black/25 text-center mt-8">
-            Baru di Putra's Store?
-            <NuxtLink to="/registration" class="text-primary">Daftar</NuxtLink>
+            Punya akun?
+            <NuxtLink to="/login" class="text-primary">Log In</NuxtLink>
           </p>
         </UCard>
       </div>
     </UContainer>
   </section>
 </template>
-
-<script setup>
+  
+  <script setup>
 const password = ref("");
 
 definePageMeta({
   layout: "auth",
   header: {
-    title: "Log in",
+    title: "Daftar",
   },
 });
 </script>
-
-<style scoped>
+  
+  <style scoped>
 .main-section {
   @apply bg-primary;
 }

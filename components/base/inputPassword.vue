@@ -7,6 +7,9 @@
     :ui="{
       icon: { trailing: { pointer: '' } },
       color: { white: { outline: 'dark:bg-white dark:text-black/85' } },
+      size: {
+        lg: 'text-xs sm:text-sm',
+      }
     }"
   >
     <template #trailing>

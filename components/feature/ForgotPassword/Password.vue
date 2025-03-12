@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="flex gap-1.5 sm:gap-7 items-center">
+    <div class="title-section">
       <UButton
         icon="i-heroicons:arrow-left"
         variant="link"
@@ -8,8 +8,8 @@
       />
       <p class="text-xs sm:text-base dark:text-black">Atur Password Kamu</p>
     </div>
-    <div class="px-8 pt-2 sm:px-16 sm:pb-16 sm:pt-9">
-      <form class="space-y-4 sm:space-y-6">
+    <div class="container-form-section">
+      <form class="form-section">
         <p class="text-xs sm:text-base text-center text-black/80">
           Buat Password Kamu
         </p>
@@ -42,7 +42,7 @@
         <UButton
           block
           variant="outline"
-          class="uppercase dark:hover:bg-primary-500 hover:bg-primary dark:hover:text-white hover:text-white"
+          class="button-form-next-section"
           @click="emit('next')"
         >
           Berikutnya
@@ -98,5 +98,20 @@ watch(password, (newValue) => {
 });
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
+.title-section {
+  @apply flex gap-1.5 sm:gap-7 items-center;
+}
+
+.container-form-section {
+  @apply px-8 pt-2 sm:px-16 sm:pb-16 sm:pt-9;
+}
+
+.form-section {
+  @apply space-y-4 sm:space-y-6;
+}
+
+.button-form-next-section {
+  @apply uppercase dark:hover:bg-primary-500 hover:bg-primary dark:hover:text-white hover:text-white;
+}
 </style>

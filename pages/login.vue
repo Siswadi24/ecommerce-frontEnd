@@ -54,7 +54,7 @@
                 },
               }"
             >
-              <UInput
+              <!-- <UInput
                 :ui="{
                   color: {
                     white: { outline: 'dark:bg-white dark:text-black/85' },
@@ -68,6 +68,11 @@
                 }"
                 placeholder="Password"
                 size="lg"
+                type="password"
+              /> -->
+              <BaseInputPassword
+                v-model="password"
+                placeholder="Masukan password anda"
               />
             </UFormGroup>
             <div>
@@ -106,6 +111,8 @@
 </template>
 
 <script setup>
+const password = ref("");
+
 definePageMeta({
   layout: "auth",
   header: {

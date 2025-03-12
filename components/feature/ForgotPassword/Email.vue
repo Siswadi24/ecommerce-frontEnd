@@ -1,11 +1,15 @@
 <template>
   <div>
-    <div class="flex gap-1.5 sm:gap-7 items-center">
-      <UButton icon="i-heroicons:arrow-left" variant="link" @click="emit('back')"/>
+    <div class="header-title-section">
+      <UButton
+        icon="i-heroicons:arrow-left"
+        variant="link"
+        @click="emit('back')"
+      />
       <p class="text-xs sm:text-base dark:text-black">Reset Password</p>
     </div>
-    <div class="px-8 pt-2 sm:px-16 sm:pb-16 sm:pt-9">
-      <form class="space-y-4 sm:space-y-6">
+    <div class="container-form-section">
+      <form class="form-input-section">
         <UFormGroup>
           <UInput
             :ui="{
@@ -14,13 +18,14 @@
               },
             }"
             placeholder="Email"
-            size="sm"
+            size="sm" class=""
           />
         </UFormGroup>
         <UButton
           block
           variant="outline"
-          class="uppercase dark:hover:bg-primary-500 hover:bg-primary dark:hover:text-white hover:text-white" @click="emit('next')"
+          class="button-next-form-section"
+          @click="emit('next')"
         >
           Berikutnya
         </UButton>
@@ -33,5 +38,20 @@
 const emit = defineEmits(["next", "back"]);
 </script>
   
-<style lang="scss" scoped>
+<style scoped>
+.header-title-section {
+  @apply flex gap-1.5 sm:gap-7 items-center;
+}
+
+.container-form-section {
+  @apply px-8 pt-2 sm:px-16 sm:pb-16 sm:pt-9;
+}
+
+.form-input-section {
+  @apply space-y-4 sm:space-y-6;
+}
+
+.button-next-form-section {
+  @apply uppercase dark:hover:bg-primary-500 hover:bg-primary dark:hover:text-white hover:text-white;
+}
 </style>

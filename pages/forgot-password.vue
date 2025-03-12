@@ -1,7 +1,7 @@
 <template>
-  <section class="bg-white">
-    <UContainer class="py-2 sm:py-5 lg:py-14">
-      <UCard class="auth-shadow sm:max-w-[500px] mx-auto">
+  <section class="main-section">
+    <UContainer class="container-section">
+      <UCard class="auth-shadow">
         <!-- <FeatureForgotPasswordEmail/> -->
         <!-- <FeatureForgotPasswordOtp /> -->
         <!-- <FeatureForgotPassword /> -->
@@ -66,7 +66,14 @@ function handleBack(stepKey) {
 </script>
 
 <style scoped>
+.main-section {
+  @apply bg-white;
+}
+.container-section {
+  @apply py-2 sm:py-5 lg:py-14;
+}
 .auth-shadow {
   box-shadow: 0px 3px 10px 0px #00000024;
+  @apply sm:max-w-[500px] mx-auto;
 }
 </style>

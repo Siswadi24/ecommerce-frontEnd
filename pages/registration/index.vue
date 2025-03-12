@@ -23,7 +23,7 @@
           class="sm:w-96"
         >
           <h2 class="dark:text-black text-sm sm:text-base">Daftar</h2>
-          <form class="mt-7 space-y-7">
+          <form class="mt-7 space-y-7" @submit.prevent="handleSubmit">
             <UFormGroup
               :ui="{
                 size: {
@@ -54,6 +54,7 @@
                   solid: 'dark:text-white',
                 },
               }"
+              type="submit"
               block
               class="uppercase text-xs sm:text-sm hover:shadow-lg hover:rounded-lg"
               >Berikutnya</UButton
@@ -81,8 +82,9 @@
   </section>
 </template>
   
-  <script setup>
+<script setup>
 const password = ref("");
+const router = useRouter();
 
 definePageMeta({
   layout: "auth",
@@ -90,6 +92,10 @@ definePageMeta({
     title: "Daftar",
   },
 });
+
+function handleSubmit() {
+  router.push("/registration/form");
+}
 </script>
   
   <style scoped>

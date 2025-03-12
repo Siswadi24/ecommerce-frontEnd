@@ -2,7 +2,7 @@
     <div class="header-profile">
         <UContainer class="header-profile-container">
             <UButton color="white" variant="link" :padded="false" class="px-3">Daftar</UButton>
-            <UButton color="white" variant="link" :padded="false" class="px-3">Login</UButton>
+            <UButton color="white" variant="link" :padded="false" class="px-3" to="/login">Login</UButton>
         </UContainer>
     </div>
 </template>

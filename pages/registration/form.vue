@@ -2,9 +2,6 @@
   <section class="main-section">
     <UContainer class="container-section">
       <UCard class="auth-shadow">
-        <!-- <FeatureForgotPasswordEmail/> -->
-        <!-- <FeatureForgotPasswordOtp /> -->
-        <!-- <FeatureForgotPassword /> -->
         <component
           :is="FeatureForgotPasswordStep[stepActive].component"
           @next="handleNext(FeatureForgotPasswordStep[stepActive].key)"
@@ -16,17 +13,13 @@
 </template>
 
 <script setup>
-import {
-  FeatureForgotPasswordEmail,
-  FormOtp,
-  FormPassword,
-} from "#components";
+import { FormOtp, FormPassword, FormCompleted } from "#components";
 
 definePageMeta({
   layout: "auth",
   header: {
     class: "custom-shadow sticky top-0 z-40",
-    title: "Reset Password",
+    title: "Daftar",
   },
 });
 
@@ -35,10 +28,6 @@ const router = useRouter();
 
 const FeatureForgotPasswordStep = [
   {
-    key: "forgot-password",
-    component: FeatureForgotPasswordEmail,
-  },
-  {
     key: "otp",
     component: FormOtp,
   },
@@ -46,20 +35,19 @@ const FeatureForgotPasswordStep = [
     key: "password",
     component: FormPassword,
   },
+  {
+    key: "completed",
+    component: FormCompleted,
+  },
 ];
 
-function handleNext(stepKey) {
-  if (stepKey === "password") {
-    alert("success reset password");
-    console.log("success reset password");
-    return router.push("/login");
-  }
+function handleNext() {
   stepActive.value++;
 }
 
 function handleBack(stepKey) {
-  if (stepKey === "forgot-password") {
-    return router.push("/login");
+  if (stepKey === "otp") {
+    return router.push("/registration");
   }
   stepActive.value--;
 }

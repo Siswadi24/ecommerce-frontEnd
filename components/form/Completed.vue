@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col justify-center items-center gap-6">
+  <div class="flex flex-col justify-center items-center gap-6 sm:px-16 sm:pb-16 pt-5">
     <UIcon
       name="i-heroicons:check-circle-solid"
       class="h-20 sm:h-36 w-20 sm:w-36 text-green-500"

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="flex gap-1.5 sm:gap-7 items-center">
-      <UButton icon="i-heroicons:arrow-left" variant="link" />
+      <UButton icon="i-heroicons:arrow-left" variant="link" @click="emit('back')"/>
       <p class="text-xs sm:text-base dark:text-black">Reset Password</p>
     </div>
     <div class="px-8 pt-2 sm:px-16 sm:pb-16 sm:pt-9">
@@ -20,7 +20,7 @@
         <UButton
           block
           variant="outline"
-          class="uppercase dark:hover:bg-primary-500 hover:bg-primary dark:hover:text-white hover:text-white"
+          class="uppercase dark:hover:bg-primary-500 hover:bg-primary dark:hover:text-white hover:text-white" @click="emit('next')"
         >
           Berikutnya
         </UButton>
@@ -30,6 +30,7 @@
 </template>
   
 <script setup>
+const emit = defineEmits(["next", "back"]);
 </script>
   
 <style lang="scss" scoped>

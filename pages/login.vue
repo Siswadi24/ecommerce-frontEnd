@@ -1,10 +1,8 @@
 <template>
-  <section class="bg-primary">
-    <UContainer class="grid grid-cols-1 sm:grid-cols-2 h-full py-10 sm:py-20">
-      <div
-        class="flex flex-col gap-5 py-2 text-white text-center sm:flex justify-center items-center"
-      >
-        <div class="flex flex-col gap-14 text-white text-center">
+  <section class="main-section">
+    <UContainer class="container-login-section">
+      <div class="container-main-title">
+        <div class="container-main-title-heading">
           <h1 class="text-base sm:text-7xl dark:text-white">
             Putra's
             <span class="text-primary-200 sm:text-white hover:text-primary-200"
@@ -116,5 +114,20 @@ definePageMeta({
 });
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
+.main-section {
+  @apply bg-primary;
+}
+
+.container-login-section {
+  @apply grid grid-cols-1 sm:grid-cols-2 h-full py-10 sm:py-20;
+}
+
+.container-main-title {
+  @apply flex flex-col gap-5 py-2 text-white text-center sm:flex justify-center items-center;
+}
+
+.container-main-title-heading {
+  @apply flex flex-col gap-14 text-white text-center;
+}
 </style>

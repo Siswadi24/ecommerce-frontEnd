@@ -1,11 +1,12 @@
 <template>
-  <UContainer class="py-5 flex gap-7">
+  <UContainer class="flex flex-col sm:flex-row py-1.5 sm:py-5 gap-1.5 sm:gap-7">
     <div class="w-44 py-4 dark:text-black/80">
       <div class="flex gap-3 items-center text-xs sm:text-base">
         <UAvatar alt="Siswadi Perdana Putra" />
         <span class="text-xs sm:text-base">Siswadi Perdana Putra</span>
       </div>
-      <hr class="border-gray-200/50" />
+
+      <hr class="border-gray-200/50 my-1" />
 
       <LayoutsSidebar :items="links" class="my-account-sidebar" />
     </div>

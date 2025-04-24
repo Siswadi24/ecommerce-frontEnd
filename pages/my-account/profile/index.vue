@@ -66,7 +66,7 @@
               variant="link"
               label="Ubah"
               class="underline"
-              to="/my-account/profile/change-email"
+              to="/my-account/profile/change-phone"
             />
           </div>
         </div>

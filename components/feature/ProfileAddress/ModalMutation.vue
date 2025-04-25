@@ -13,7 +13,9 @@
         <UFormGroup>
           <UInput placeholder="Nomor Telepon" size="lg" />
         </UFormGroup>
-        <UFormGroup class="col-span-2"> </UFormGroup>
+        <UFormGroup class="col-span-2">
+            <FeatureProfileAddressInputSelectCity />
+        </UFormGroup>
         <UFormGroup>
           <UInput placeholder="Kecamatan" size="lg" />
         </UFormGroup>

@@ -11,6 +11,7 @@
           },
         },
       }"
+      :content="false"
     />
     <UInput
       leading-icon="i-heroicons:magnifying-glass"

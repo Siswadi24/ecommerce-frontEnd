@@ -1,7 +1,9 @@
 <template>
   <SellerCard title="Daftar Voucher">
     <template #header-append>
-      <UButton icon="i-heroicons:plus"> Tambah Voucher </UButton>
+      <UButton icon="i-heroicons:plus" to="/seller/voucher/add">
+        Tambah Voucher
+      </UButton>
     </template>
     <BaseTabs
       :items="status"
@@ -197,6 +199,13 @@ const items = [
     end_date: "2024-10-12 06:03:51",
   },
 ];
+
+function handleEdit(row) {
+  router.push({
+    path: `/seller/voucher/edit/${row.uuid}`,
+    state: row,
+  });
+}
 </script>
 
 <style lang="scss" scoped>

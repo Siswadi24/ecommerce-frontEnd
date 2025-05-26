@@ -44,7 +44,9 @@
             <UTextarea size="lg" />
           </UFormGroup>
           <div class="flex gap-2 items-center justify-end pt-4">
-            <UButton color="white" @click="openWithdraw = false"> Tutup </UButton>
+            <UButton color="white" @click="openWithdraw = false">
+              Tutup
+            </UButton>
             <UButton> Konfirmasi </UButton>
           </div>
         </form>

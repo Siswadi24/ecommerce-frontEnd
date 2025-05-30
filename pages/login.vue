@@ -23,15 +23,18 @@
           class="sm:w-96"
         >
           <h2 class="dark:text-black text-sm sm:text-base">Log in</h2>
-          <form class="mt-7 space-y-7">
+          <form class="mt-7 space-y-7" @submit.prevent="handleSubmit">
             <UFormGroup
+              :error="v$.phone_email.$errors[0]?.$message"
               :ui="{
+                wrapper: 'mt-5',
                 size: {
                   xs: '2xs',
                 },
               }"
             >
               <UInput
+                v-model="form.phone_email"
                 :ui="{
                   color: {
                     white: { outline: 'dark:bg-white dark:text-black/85' },
@@ -40,7 +43,7 @@
                     xs: 'text-xs sm:text-sm',
                   },
                   padding: {
-                    xs: 'px-3 py-2',
+                    xs: 'px-3 py-2 my-3',
                   },
                 }"
                 placeholder="Masukan No. Handphone/Email"
@@ -48,6 +51,7 @@
               />
             </UFormGroup>
             <UFormGroup
+              :error="v$.password.$errors[0]?.$message"
               :ui="{
                 size: {
                   xs: '2xs',
@@ -55,12 +59,18 @@
               }"
             >
               <BaseInputPassword
-                v-model="password"
+                v-model="form.password"
                 placeholder="Masukan password anda"
               />
             </UFormGroup>
             <div>
-              <UButton block>Log in</UButton>
+              <UButton
+                type="submit"
+                class="mt-5"
+                block
+                :loading="status === 'pending' || statusProfile === 'pending'"
+                >Log in</UButton
+              >
               <UButton
                 variant="link"
                 color="blue"
@@ -80,10 +90,7 @@
               label: 'text-gray-300 font-normal',
             }"
           />
-          <UButton block color="white">
-            <img src="~/assets/images/google.png" class="w-6 h-6" />
-            Google
-          </UButton>
+          <BaseButtonGoogleSignIn class="mt-4"/>
           <p class="text-sm font-normal text-black/25 text-center mt-8">
             Baru di Putra's Store?
             <NuxtLink to="/registration" class="text-primary">Daftar</NuxtLink>
@@ -95,14 +102,96 @@
 </template>
 
 <script setup>
+import useVuelidate from "@vuelidate/core";
+import { email, helpers, minLength, required } from "@vuelidate/validators";
+import { useApi } from "~/composables/use-api";
+
 const password = ref("");
+const session = useSession();
+const { profile, token: tokenSession } = storeToRefs(session);
+const token = useCookie("access_token");
+
+const nuxtApp = useNuxtApp();
 
 definePageMeta({
   layout: "auth",
   header: {
     title: "Log in",
   },
+  middleware: ["must-not-auth"],
 });
+
+const form = ref({
+  phone_email: "",
+  password: "",
+});
+
+const rules = {
+  phone_email: {
+    required,
+    isValidUsername: helpers.withMessage("value is not valid", (value) => {
+      if (value) {
+        if (/^\d{4}/.test(value)) {
+          //Checking phone number
+          return /^\d+$/.test(value);
+        }
+
+        //Cheking Email
+        return email.$validator(value);
+      }
+      return true;
+    }),
+  },
+  password: { required, minLength: minLength(8) },
+};
+
+const $externalResults = ref({});
+
+const v$ = useVuelidate(rules, form, {
+  $autoDirty: true,
+  $externalResults,
+});
+
+//Post Fetch Login
+const { data, status, execute, error } = useSubmit("/server/api/login");
+
+//Get Fetch Profile From API
+const { execute: getProfile, status: statusProfile } = useApi(
+  "/server/api/profile",
+  {
+    immediate: false,
+    onResponse({ response }) {
+      if (response.ok) {
+        profile.value = response._data?.data;
+
+        nuxtApp.runWithContext(() => {
+          navigateTo("/");
+        });
+      }
+    },
+  }
+);
+
+//Handle Submit Form Login
+async function handleSubmit() {
+  const isValid = await v$.value.$validate();
+  if (!isValid) return;
+
+  //Fetch API
+  await execute(form.value);
+
+  if (error.value) {
+    $externalResults.value = error.value.data?.meta?.validations || {};
+    return;
+  }
+
+  if (status.value === "success" && data.value?.data?.token) {
+    tokenSession.value = data.value?.data?.token;
+    token.value = data.value?.data?.token;
+    // profile.value = {}
+    getProfile();
+  }
+}
 </script>
 
 <style scoped>

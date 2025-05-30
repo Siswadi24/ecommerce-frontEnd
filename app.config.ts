@@ -54,6 +54,9 @@ export default defineAppConfig({
         },
         select: {
             rounded: 'rounded-sm'
+        },
+        notifications: {
+            position: 'top-0 bottom-[unset]'
         }
     },
 })

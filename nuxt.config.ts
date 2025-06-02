@@ -33,6 +33,7 @@ export default defineNuxtConfig({
     }
   },
   routeRules: {
-    '/server/**': { proxy: `${import.meta.env.NUXT_BASE_URL}/**` }
+    '/server/**': { proxy: `${import.meta.env.NUXT_BASE_URL}/**` },
+    '/registration/**': { ssr: false }
   }
 })

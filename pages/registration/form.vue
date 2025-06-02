@@ -21,7 +21,7 @@
         <UCard class="auth-shadow">
           <component
             :is="RegistrationStep[stepActive].component"
-            @next="handleNext(RegistrationStep[stepActive].key)"
+            @next="handleNext(RegistrationStep[stepActive].key, $event)"
             @back="handleBack(RegistrationStep[stepActive].key)"
           />
         </UCard>
@@ -62,8 +62,22 @@ const RegistrationStep = [
   },
 ];
 
-function handleNext() {
-  stepActive.value++;
+function handleNext(step, value) {
+  switch (step) {
+    case "otp":
+      //TODO Hit API OTP
+      console.log(value);
+      stepActive.value++;
+      break;
+    case "password":
+      //TODO Hit API OTP
+      console.log(value);
+      stepActive.value++;
+      break;
+
+    default:
+      break;
+  }
 }
 
 function handleBack(stepKey) {

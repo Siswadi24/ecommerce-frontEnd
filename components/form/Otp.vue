@@ -15,21 +15,35 @@
       <p
         class="text-sm sm:text-base text-center mt-2 text-black/80 font-medium"
       >
-        danaperdanaputra32@gmail.com
+        {{ showingEmail }}
       </p>
       <form class="form-section">
-        <UFormGroup>
+        <UFormGroup :error="errorMessage">
           <BaseInputPin v-model="otpValue" />
         </UFormGroup>
         <div>
-          <p class="text-xs sm:text-sm text-black/20 text-center">
-            Mohon tunggu {{ 47 }} detik untuk mengirim ulang.
+          <p
+            v-if="isRunning"
+            class="text-xs sm:text-sm text-black/20 text-center"
+          >
+            Mohon tunggu {{ displayValue }} detik untuk mengirim ulang.
           </p>
+          <div v-else class="text-black/25 text-sm text-center">
+            Tidak menerima kode?
+            <UButton
+              variant="link"
+              :padded="false"
+              color="blue"
+              :loading="loadingResend"
+            >
+              Kirim Ulang
+            </UButton>
+          </div>
           <UButton
             block
             variant="outline"
             class="button-form-next-section"
-            @click="emit('next')"
+            @click="handleSubmit"
           >
             Berikutnya
           </UButton>
@@ -40,8 +54,38 @@
 </template>
   
 <script setup>
-const otpValue = ref("");
+defineProps({
+  loading: {
+    type: Boolean,
+    default: false,
+  },
+  loadingResend: {
+    type: Boolean,
+    default: false,
+  },
+});
 const emit = defineEmits(["next", "back"]);
+const { registrationForm } = storeToRefs(useSession());
+const otpValue = ref("");
+const errorMessage = ref("");
+
+const { maskEmail } = useMasking();
+const showingEmail = computed(() => maskEmail(registrationForm.value.email));
+
+const { startCountdown, displayValue, isRunning } = useCountdown();
+startCountdown(60);
+
+// onMounted(() => {
+//   startCountdown(60);
+// });
+
+function handleSubmit() {
+  if (otpValue.value.length !== 6) return;
+
+  emit("next", {
+    otp: otpValue.value,
+  });
+}
 </script>
   
 <style scoped>

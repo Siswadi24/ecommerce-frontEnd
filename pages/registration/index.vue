@@ -25,6 +25,7 @@
           <h2 class="dark:text-black text-sm sm:text-base">Daftar</h2>
           <form class="mt-7 space-y-7" @submit.prevent="handleSubmit">
             <UFormGroup
+              :error="v$.email.$errors?.[0]?.$message"
               :ui="{
                 size: {
                   xs: '2xs',
@@ -32,6 +33,7 @@
               }"
             >
               <UInput
+              v-model="registrationForm.email"
                 :ui="{
                   color: {
                     white: { outline: 'dark:bg-white dark:text-black/85' },
@@ -80,8 +82,8 @@
 </template>
   
 <script setup>
-const password = ref("");
-const router = useRouter();
+import useVuelidate from "@vuelidate/core";
+import { email, required } from "@vuelidate/validators";
 
 definePageMeta({
   layout: "auth",
@@ -90,7 +92,26 @@ definePageMeta({
   },
 });
 
-function handleSubmit() {
+const router = useRouter();
+const { registrationForm } = storeToRefs(useSession());
+
+const rules = {
+  email: { required, email },
+};
+
+const $externalResults = ref({});
+
+const v$ = useVuelidate(rules, registrationForm, {
+  $autoDirty: true,
+  $externalResults,
+});
+
+async function handleSubmit() {
+  $externalResults.value = {};
+
+  const isValid = await v$.value.$validate();
+  if (!isValid) return;
+
   router.push("/registration/form");
 }
 </script>

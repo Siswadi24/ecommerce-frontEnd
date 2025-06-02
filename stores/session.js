@@ -1,5 +1,3 @@
-import { defineStore } from "pinia";
-
 export const useSession = defineStore("session", () => {
     const profile = ref({
         "name": "",
@@ -15,6 +13,22 @@ export const useSession = defineStore("session", () => {
 
     const token = ref('');
     const tokenCookie = useCookie('access_token');
+
+    const registrationForm = ref({
+        email: "",
+        otp: "",
+        password: "",
+        password_confirmation: ""
+    })
+
+    function resetRegistrationForm() {
+        registrationForm.value = {
+            email: "",
+            otp: "",
+            password: "",
+            password_confirmation: "",
+        };
+    }
 
     function logout() {
         token.value = '';
@@ -34,5 +48,5 @@ export const useSession = defineStore("session", () => {
         navigateTo('/');
     }
 
-    return { profile, token, logout, tokenCookie };
+    return { profile, token, logout, tokenCookie, registrationForm, resetRegistrationForm };
 })

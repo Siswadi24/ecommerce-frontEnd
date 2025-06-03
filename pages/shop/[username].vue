@@ -50,6 +50,7 @@
           image="https://picsum.photos/1920/1080?random=1"
           :slug="`product-${i}`"
           :discount="100"
+          aspect-ratio="16/9"
         />
       </div>
       <div class="flex justify-center mt-8">

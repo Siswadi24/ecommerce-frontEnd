@@ -33,7 +33,7 @@
               }"
             >
               <UInput
-              v-model="registrationForm.email"
+                v-model="registrationForm.email"
                 :ui="{
                   color: {
                     white: { outline: 'dark:bg-white dark:text-black/85' },
@@ -59,8 +59,10 @@
               type="submit"
               block
               class="uppercase text-xs sm:text-sm hover:shadow-lg hover:rounded-lg"
-              >Berikutnya</UButton
+              :loading="status === 'pending'"
             >
+              Berikutnya
+            </UButton>
           </form>
 
           <UDivider
@@ -90,6 +92,7 @@ definePageMeta({
   header: {
     title: "Daftar",
   },
+  middleware: ['must-not-auth'],
 });
 
 const router = useRouter();
@@ -106,13 +109,27 @@ const v$ = useVuelidate(rules, registrationForm, {
   $externalResults,
 });
 
+const { status, error, execute } = useSubmit("/server/api/register");
+
 async function handleSubmit() {
   $externalResults.value = {};
 
   const isValid = await v$.value.$validate();
   if (!isValid) return;
 
-  router.push("/registration/form");
+  //Fetch API
+  await execute({
+    email: registrationForm.value.email,
+  });
+
+  if (error.value) {
+    $externalResults.value = error.value.data?.meta?.validations || {};
+    return;
+  }
+
+  if (status.value === "success") {
+    router.push("/registration/form");
+  }
 }
 </script>
   

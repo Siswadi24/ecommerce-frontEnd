@@ -15,11 +15,17 @@
 </template>
 
 <script setup>
+const props = defineProps({
+  redirectTo: {
+    type: String,
+    default: "/",
+  }
+})
 const router = useRouter();
 const { startCountdown, displayValue } = useCountdown();
 
 function redirectToHomePage() {
-  router.replace("/");
+  router.replace(props.redirectTo);
 }
 
 startCountdown(3, redirectToHomePage);

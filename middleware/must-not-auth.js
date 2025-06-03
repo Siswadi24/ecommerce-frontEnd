@@ -3,6 +3,6 @@ export default defineNuxtRouteMiddleware(async () => {
     const { tokenCookie } = storeToRefs(session)
 
     if (tokenCookie.value) {
-        return navigateTo('/my-account/profile')
+        return navigateTo('/my-account/profile', { external: true })
     }
 })

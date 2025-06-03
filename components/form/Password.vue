@@ -142,6 +142,12 @@ async function handleSubmit() {
 
   // emit("next", { password: form.value.password });
 }
+
+defineExpose({
+  setError: (error) => {
+    $externalResults.value = error;
+  },
+});
 </script>
 
 <style scoped>

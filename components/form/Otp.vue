@@ -18,7 +18,7 @@
         {{ showingEmail }}
       </p>
       <form class="form-section">
-        <UFormGroup :error="errorMessage">
+        <UFormGroup class="text-center" :error="errorMessages">
           <BaseInputPin v-model="otpValue" />
         </UFormGroup>
         <div>
@@ -35,6 +35,7 @@
               :padded="false"
               color="blue"
               :loading="loadingResend"
+              @click="emit('resend')"
             >
               Kirim Ulang
             </UButton>
@@ -44,6 +45,7 @@
             variant="outline"
             class="button-form-next-section"
             @click="handleSubmit"
+            :loading="loading"
           >
             Berikutnya
           </UButton>
@@ -64,10 +66,10 @@ defineProps({
     default: false,
   },
 });
-const emit = defineEmits(["next", "back"]);
+const emit = defineEmits(["next", "back", "resend"]);
 const { registrationForm } = storeToRefs(useSession());
 const otpValue = ref("");
-const errorMessage = ref("");
+const errorMessages = ref("");
 
 const { maskEmail } = useMasking();
 const showingEmail = computed(() => maskEmail(registrationForm.value.email));
@@ -86,6 +88,13 @@ function handleSubmit() {
     otp: otpValue.value,
   });
 }
+
+defineExpose({
+  startCountdown: () => startCountdown(60),
+  setError: (error) => {
+    errorMessages.value = error;
+  },
+});
 </script>
   
 <style scoped>

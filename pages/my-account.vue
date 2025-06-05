@@ -12,9 +12,11 @@
     </div>
 
     <div class="flex-1">
-      <component :is="wrapper">
-        <NuxtPage />
-      </component>
+      <ClientOnly>
+        <component :is="wrapper">
+          <NuxtPage />
+        </component>
+      </ClientOnly>
     </div>
   </UContainer>
 </template>

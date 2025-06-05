@@ -46,6 +46,7 @@
             class="button-form-next-section"
             @click="handleSubmit"
             :loading="loading"
+            :disabled="otpValue.length !== 6"
           >
             Berikutnya
           </UButton>

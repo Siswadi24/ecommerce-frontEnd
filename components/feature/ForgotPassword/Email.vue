@@ -9,23 +9,27 @@
       <p class="text-xs sm:text-base dark:text-black">Reset Password</p>
     </div>
     <div class="container-form-section">
-      <form class="form-input-section">
-        <UFormGroup>
+      <form class="form-input-section" @submit.prevent="handleSubmit">
+        <UFormGroup :error="v$.email.$errors[0]?.$message">
           <UInput
+            v-model="form.email"
             :ui="{
               color: {
                 white: { outline: 'dark:bg-white dark:text-black/85' },
               },
             }"
             placeholder="Email"
-            size="sm" class=""
+            size="sm"
+            class=""
           />
         </UFormGroup>
         <UButton
+        type="submit"
           block
           variant="outline"
           class="button-next-form-section"
-          @click="emit('next')"
+          :loading="loading"
+          :disabled="v$.$invalid"
         >
           Berikutnya
         </UButton>
@@ -35,7 +39,44 @@
 </template>
   
 <script setup>
+import useVuelidate from "@vuelidate/core";
+import { email, required } from "@vuelidate/validators";
+
+defineProps({
+  loading: {
+    type: Boolean,
+    default: false,
+  },
+});
+
 const emit = defineEmits(["next", "back"]);
+const form = ref({
+  email: "",
+});
+
+const rules = {
+  email: { required, email },
+};
+const $externalResults = ref({});
+const v$ = useVuelidate(rules, form, {
+  $autoDirty: true,
+  $externalResults,
+});
+
+async function handleSubmit() {
+  $externalResults.value = {};
+  const isValid = await v$.value.$validate();
+
+  if (!isValid) {
+    return;
+  }
+
+  emit("next", form.value);
+}
+
+defineExpose({
+  setError: (error) => ($externalResults.value = error),
+});
 </script>
   
 <style scoped>

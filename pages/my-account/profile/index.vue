@@ -13,7 +13,7 @@
       <UAvatar
         :src="imageProfile"
         size="3xl"
-        alt="Siswadi Perdana Putra"
+        alt="Siswadi Perdana Putraa"
         img-class="object-cover"
       />
       <UButton
